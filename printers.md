@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Creating Printers
+title: Creating Printers for BeDoc
+toc: true
 ---
-
-# Creating Printers for BeDoc
 
 This guide explains how to create custom printers for BeDoc. Printers are
 responsible for transforming parsed documentation into specific output formats

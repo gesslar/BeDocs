@@ -1,7 +1,7 @@
 ---
 layout: page
 title: BeDoc
-nav_exclude: true
+toc: true
 ---
 
 # Welcome to BeDoc 🤗

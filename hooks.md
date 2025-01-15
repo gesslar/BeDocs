@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Hook System
+title: BeDoc Hook System
+toc: true
 ---
-
-# BeDoc Hook System
 
 The hook system allows you to modify and enhance the documentation process by
 injecting custom logic at specific points. With full async/await support, hooks

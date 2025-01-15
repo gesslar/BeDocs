@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Creating Parsers
+title: Creating Parsers for BeDoc
+toc: true
 ---
-
-# Creating Parsers for BeDoc
 
 This guide explains how to create custom parsers for BeDoc. Parsers are
 responsible for analyzing source code and extracting documentation information
