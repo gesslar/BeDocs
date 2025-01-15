@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: BeDoc
 nav_exclude: true
 ---
