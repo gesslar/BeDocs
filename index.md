@@ -35,6 +35,7 @@ and powerful solution.
 ## Getting Started
 
 1. **Installation**:
+
    ```bash
    # Install globally
    npm install -g bedoc
@@ -44,12 +45,14 @@ and powerful solution.
    ```
 
 2. **Basic Usage**:
+
    ```bash
    # Generate documentation from JavaScript files
    bedoc -l javascript -f markdown -i src/*.js -o docs
    ```
 
 3. **Configuration**:
+
    Create a `bedoc.config.json` for reusable settings:
    ```json
    {
