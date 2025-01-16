@@ -14,11 +14,13 @@ process.
 BeDoc supports two types of hooks:
 
 1. **Parser Hooks**: Modify the parsing process
+
    - Enhance parsed content
    - Add metadata
    - Validate documentation structure
 
 2. **Printer Hooks**: Transform the output
+
    - Modify formatting
    - Add external content
    - Apply transformations
@@ -28,6 +30,7 @@ BeDoc supports two types of hooks:
 Each hook type has specific events that are triggered during processing:
 
 ### Parser Events
+
 - `start`: Before parsing begins
 - `section_load`: When a documentation section is found
 - `enter`: When entering a section
@@ -35,6 +38,7 @@ Each hook type has specific events that are triggered during processing:
 - `end`: After parsing completes
 
 ### Printer Events
+
 - `start`: Before printing begins
 - `section_load`: When a section is loaded for printing
 - `enter`: When entering a section
