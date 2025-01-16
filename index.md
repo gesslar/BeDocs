@@ -1,114 +1,119 @@
 ---
-layout: page
-title: BeDoc
+layout: post
+title: Home
+icon: fas fa-house
+order: 0
 toc: true
+permalink: /
 ---
 
-# Welcome to BeDoc 🤗
+BeDoc is designed to bridge the gap for languages and formats that lack strong support for documentation generation. Whether you’re working with a niche language like LPC or Lua or targeting unconventional outputs like Wikitext, BeDoc empowers you to transform your code into polished documentation. With unparalleled flexibility and extensibility, BeDoc adapts to your needs—even if existing tools don’t.
 
-BeDoc is a comprehensive and adaptable documentation engine that integrates
-effortlessly with any programming language or file format. Built on a robust
-modular design, BeDoc enables developers to efficiently parse and generate
-documentation through custom parsers and printers. Whether you are using the
-command line, a VS Code extension, or a GitHub Action, BeDoc provides an intuitive
-and powerful solution.
+---
 
-## Key Features
+## Why Choose BeDoc?
 
-- **Pluggable Architecture**: Extend BeDoc's functionality with custom parsers and
-  printers tailored to your project's needs. The hook system allows you to modify
-  the documentation pipeline at any point without changing core code.
-- **Consistent Response System**: Every operation returns consistent response
-  objects with clear success/error states and detailed messages, making error
-  handling and debugging straightforward.
-- **Multi-Environment Support**: Operate BeDoc via the command line interface
-  (CLI), embed it in Visual Studio Code as an extension, or integrate it into
-  GitHub Actions for automated workflows.
-- **Dynamic Configuration**: Configure BeDoc using JSON files or CLI options to
-  specify input files, output paths, and more to suit your workflow.
-- **Automatic Module Discovery**: BeDoc identifies and loads parsers and printers
-  from npm packages that follow the BeDoc naming convention, streamlining the
-  integration process.
-- **Enhanced Debugging**: Detailed logging and error handling make troubleshooting
-  straightforward and transparent.
+- **Support for Niche Use Cases**: Generate documentation for lesser-supported languages and formats, from LPC to Markdown or JavaScript to Wikitext.
+- **Customizable Output**: Tailor documentation to fit any format, including those not commonly addressed by traditional tools.
+- **Seamless Integration**: Use BeDoc via the command line, Visual Studio Code, or GitHub Actions.
+- **Powerful Hook System**: Extend every part of the pipeline with async hooks, enabling network requests, API integrations, or any custom logic.
+- **Priority-Based Configuration**: Layered, cascading configuration supports JSON files, environment variables, CLI options, and package.json entries.
 
-## Getting Started
+---
 
-### Installation
+## Quick Start
 
-   ```bash
-   # Install globally
-   npm install -g bedoc
+### 1. Install BeDoc
+```bash
+# Install globally
+npm install -g bedoc
 
-   # Or add to your project
-   npm install --save-dev bedoc
-   ```
+# Or add to your project
+npm install --save-dev bedoc
+```
 
-### Basic Usage
+### 2. Generate Documentation
+```bash
+# Example: Generate Markdown docs for JavaScript files
+bedoc -l javascript -f markdown -i src/**/*.js -o docs
+```
 
-   ```bash
-   # Generate documentation from JavaScript files
-   bedoc -l javascript -f markdown -i src/*.js -o docs
-   ```
+### 3. Use a Config File
+Simplify your workflow with a configuration file:
+```json
+{
+  "language": "javascript",
+  "format": "markdown",
+  "input": ["src/**/*.js"],
+  "output": "docs"
+}
+```
+Run with:
+```bash
+bedoc -c bedoc.config.json
+```
 
-### Configuration
+---
 
-   Create a `bedoc.config.json` for reusable settings:
-   ```json
-   {
-     "language": "javascript",
-     "format": "markdown",
-     "input": ["src/**/*.js"],
-     "output": "docs/api"
-   }
-   ```
+## Key Use Cases
 
-   Or add a `bedoc` section to your `package.json`:
-   ```json
-   {
-     "name": "my-project",
-     "version": "1.0.0",
-     "bedoc": {
-       "language": "javascript",
-       "format": "markdown",
-       "input": ["src/**/*.js"],
-       "output": "docs/api"
-     }
-   }
-   ```
+### Documenting APIs
+Generate clear and structured API documentation for languages and frameworks that lack built-in tools.
 
-## Architecture
+### Supporting Niche Formats
+Convert code comments to Markdown, Wikitext, or other less common formats seamlessly.
 
-BeDoc's architecture is built around three core concepts:
-- **Parsers**: Convert source code into structured documentation data
-- **Printers**: Transform structured data into the desired output format
-- **Hooks**: Modify the documentation process at any point
+### Automating Workflows
+Integrate BeDoc into CI/CD pipelines with GitHub Actions or similar tools to keep documentation up-to-date.
 
-Plugins (parsers and printers) are discovered through npm packages that follow the
-BeDoc naming convention (`bedoc-*`) and include a `bedoc` field in their package.json.
-This modular design allows for maximum flexibility while maintaining clean interfaces
-and predictable behavior.
+---
 
-## Documentation
+## Feature Highlights
 
-Explore the full capabilities of BeDoc:
+### Parsers: Adapt to Any Language
+BeDoc’s parsers analyze your code and extract meaningful documentation, even for niche languages. Create custom parsers to support any syntax or annotations. [Learn More About Parsers](parsers)
 
-- **[Configuration Guide](configuration)**: Learn how to configure BeDoc using
-  CLI options or configuration files.
-- **[Creating Parsers](parsers)**: Build custom parsers to support new
-  languages or documentation styles.
-- **[Creating Printers](printers)**: Develop printers to output documentation
-  in your desired format.
-- **[Hook System](hooks)**: Extend BeDoc's functionality through hooks to
-  customize the documentation process.
+### Printers: Flexible Outputs
+Printers transform parsed data into your desired format, from Markdown to less common formats like Wikitext. Async support enables powerful integrations like fetching additional data during formatting. [Learn More About Printers](printers)
 
-## Contribute
+### Hooks: Customize Every Step
+Hooks allow you to extend and modify the documentation process at any point. Use them to add metadata, validate content, or integrate with APIs—all with async capabilities. [Learn More About Hooks](hooks)
 
-BeDoc is an open-source project released under [The Unlicense](https://unlicense.org),
-placing it in the public domain. This means you are free to use, modify, and
-distribute the software without restrictions. Community contributions are welcome
-and encouraged. To report bugs or suggest features, please visit our
-[issue tracker]({{ site.issues }}). For the latest updates and source code,
-explore our [GitHub repository]({{ site.repo }}).
+### Priority-Based Configuration
+BeDoc’s configuration system is layered and cascading, supporting priorities across JSON files, environment variables, CLI options, and package.json entries.
 
-Elevate your documentation workflow with BeDoc today!
+---
+
+## Example Configurations
+
+### Markdown for LPC
+```json
+{
+  "language": "lpc",
+  "format": "markdown",
+  "input": ["src/**/*.c"],
+  "output": "docs/simul_efun"
+}
+```
+
+### Wikitext for Lua
+```json
+{
+  "language": "lua",
+  "format": "wikitext",
+  "input": ["src/**/*.lua"],
+  "output": "docs/wiki"
+}
+```
+
+---
+
+## Explore More
+
+- **[Parsers](parsers)**: Create custom parsers for your language or framework.
+- **[Printers](printers)**: Build printers for your preferred output format.
+- **[Hooks](hooks)**: Modify and enhance the documentation pipeline.
+
+---
+
+Ready to elevate your documentation game? Install BeDoc and start building documentation that works for you!

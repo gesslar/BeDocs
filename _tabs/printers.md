@@ -1,7 +1,7 @@
 ---
-layout: page
-title: Creating Printers for BeDoc
-toc: true
+layout: post
+icon: fas fa-scroll
+order: 3
 ---
 
 This guide explains how to create custom printers for BeDoc. Printers are

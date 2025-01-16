@@ -1,7 +1,9 @@
 ---
-layout: page
-title: Creating Parsers for BeDoc
-toc: true
+layout: post
+icon: fas fa-code
+order: 2
+panel_includes:
+  - toc
 ---
 
 This guide explains how to create custom parsers for BeDoc. Parsers are

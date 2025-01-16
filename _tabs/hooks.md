@@ -1,7 +1,8 @@
 ---
-layout: page
-title: BeDoc Hook System
+layout: post
+icon: fas fa-magic
 toc: true
+order: 4
 ---
 
 The hook system allows you to modify and enhance the documentation process by
