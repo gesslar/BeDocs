@@ -2,7 +2,7 @@
 layout: post
 icon: fas fa-magic
 toc: true
-order: 4
+order: 6
 ---
 
 The hook system allows you to modify and enhance the documentation process by

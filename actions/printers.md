@@ -1,7 +1,8 @@
 ---
 layout: post
 icon: fas fa-scroll
-order: 3
+category: ["Actions", "Printers"]
+order: 5
 ---
 
 This guide explains how to create custom printers for BeDoc. Printers are

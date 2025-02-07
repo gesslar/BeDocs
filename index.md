@@ -1,9 +1,8 @@
 ---
-layout: post
+layout: page
 title: Home
 icon: fas fa-house
 order: 0
-toc: true
 permalink: /
 ---
 
