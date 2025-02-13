@@ -1,8 +1,7 @@
 ---
-layout: post
-icon: fas fa-cog
-toc: true
-order: 3
+title: Configuration
+layout: default
+nav_order: 3
 ---
 
 BeDoc offers a flexible, priority-based configuration system that adapts to

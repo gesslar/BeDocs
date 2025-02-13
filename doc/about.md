@@ -1,7 +1,6 @@
 ---
-layout: post
-icon: fas fa-info-circle
-order: 99
+layout: About
+nav_order: 99
 ---
 
 # Attributions

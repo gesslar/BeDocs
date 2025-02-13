@@ -1,9 +1,13 @@
 ---
-layout: post
-icon: fas fa-magic
-toc: true
-order: 6
+title: Hooks
+layout: default
+nav_order: 5
 ---
+
+{: .important-title }
+> Under Review
+>
+> This document is presently under review following recent updates to [BeDoc](/).
 
 The hook system allows you to modify and enhance the documentation process by
 injecting custom logic at specific points. With full async/await support, hooks

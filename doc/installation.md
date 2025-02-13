@@ -1,7 +1,7 @@
 ---
-layout: post
-icon: fas fa-floppy-disk
-order: 2
+title: Installation
+layout: default
+nav_order: 2
 ---
 
 Installation of BeDoc is straightforward and can be done via npm or yarn. The

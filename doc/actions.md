@@ -1,14 +1,12 @@
 ---
-layout: post
-icon: fas fa-bolt-lightning
-order: 4
+title: Actions
+layout: default
+nav_order: 4
 ---
 
 Actions are the core of BeDoc's functionality. They define the primary tasks
 that the tool can perform, such as parsing source code, generating
 documentation, and running custom scripts.
-
-To learn more about creating an action, please see [Creating an Action](creating_an_action).
 
 ## Parse
 
@@ -16,8 +14,7 @@ The `parse` action reads source code files, extracts documentation information,
 and generates a structured output that can be consumed by printers. Parsers are
 responsible for analyzing the source code and producing a structured output.
 
-Read the [Parser Guide](parsers) to learn how to create custom parsers for
-BeDoc.
+Read the [Parser Guide](actions/parsers) to learn how to create parsers for BeDoc.
 
 ## Print
 
@@ -25,8 +22,7 @@ The `print` action transforms parsed documentation into specific output formats
 like Markdown, HTML, or any other format you need. Printers are responsible for
 formatting the documentation content.
 
-Read the [Printer Guide](printers) to learn how to create custom printers for
-BeDoc.
+Read the [Printer Guide](actions/printers) to learn how to create printers for BeDoc.
 
 ## Hooks
 
@@ -35,7 +31,7 @@ documentation process by injecting custom logic at specific points. With full
 async/await support, hooks can integrate with external services, APIs, and
 tools.
 
-Read the [Hooks Guide](/hooks) to learn how to create custom hooks for BeDoc.
+Read the [Hooks Guide](hooks) to learn how to create custom hooks for BeDoc.
 
 ## Action File
 
@@ -56,11 +52,11 @@ and printers) within the same file. Making this incredibly portable.
 
 The first array, is an array of objects that define the actions.
 
-|     **Field**      | **Parameters**                    |          **Description**          | **Required** |
-| :----------------: | :-------------------------------- | :-------------------------------: |
-|       `meta`       | n/a                               |  Meta information for the action  | Yes          |
-|       `init`       | `object: config`                  | Function to initialize the action | No           |
-| `parse` or `print` | `string: file`, `object: content` |  Function to execute the action   | Yes          |
+| **Field** | **Parameters**                    |         **Description**         | **Required** |
+| :-------: | :-------------------------------- | :-----------------------------: |
+|  `meta`   | n/a                               | Meta information for the action | Yes          |
+| `setup()` | `object: tools`                   |     Initialisation function     | No           |
+|  `run()`  | `object: file`, `object: content` | Function to execute the action  | Yes          |
 
 #### Example
 
@@ -69,32 +65,26 @@ export const actions = [
   {
     meta: Object.freeze({
       action: "parse",
-      language: "lpc",
+      language: "lpcdoc",
     }),
 
-    async init(config) {
+    async setup(tools) {
       // Initialize the parser/printer
     }
 
-    parse(file, content) {
+    parse(module) {
       // Execute the action
 
-      const result = this.doTheThing(content)
+      const result = doTheThing(module.moduleContent)
 
       return {
         status: "success",
-        result: {
-          file,
-          raw: content,
-          result
-        }
+        result:
       }
-    }
 
-    doTheThing(content) {
-      // Do the thing
-
-      return "result"
+      doTheThing(content) {
+        return {data:"result"}
+      }
     }
   },
 
@@ -104,21 +94,27 @@ export const actions = [
       format: "markdown",
     }),
 
-    async init(config) {
+    async setup(tools) {
       // Initialize the parser/printer
     }
 
-    print(module, content) {
+    print(module) {
       // Execute the action
 
-      const result = this.doTheThing(content)
+      const result = doTheThing(module.moduleContent)
 
       return {
         status: "success",
         destFile: `${module}.md`,
         content: result
       }
+
+      doTheThing(content) {
+        return content.data.toUpperCase()
+      }
     }
+
+
   }
 ]
 ```
@@ -127,7 +123,7 @@ export const actions = [
 
 The second array is an array of strings that define the contract for each
 action, in the same order as the first array. Contracts are expressed as YAML
-strings, and define the expected input and output from the corresponding
+strings, and define the expected input or output from the corresponding
 action.
 
 Each node in the contract is a key-value pair, where the key is the name of the

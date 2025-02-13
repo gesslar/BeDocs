@@ -1,8 +1,7 @@
 ---
-layout: post
-icon: fas fa-magnifying-glass
-toc: true
-order: 7
+title: Discovery
+layout: default
+nav_order: 5
 ---
 
 BeDoc offers a flexible, priority-based configuration system that adapts to

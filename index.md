@@ -1,8 +1,7 @@
 ---
-layout: page
+layout: default
 title: Home
-icon: fas fa-house
-order: 0
+nav_order: 0
 permalink: /
 ---
 
@@ -25,10 +24,10 @@ BeDoc is designed to bridge the gap for languages and formats that lack strong s
 ### 1. Install BeDoc
 ```bash
 # Install globally
-npm install -g bedoc
+npm i -g bedoc
 
 # Or add to your project
-npm install --save-dev bedoc
+npm i --save-dev bedoc
 ```
 
 ### 2. Generate Documentation
@@ -86,6 +85,7 @@ BeDoc’s configuration system is layered and cascading, supporting priorities a
 ## Example Configurations
 
 ### Markdown for LPC
+
 ```json
 {
   "language": "lpc",
@@ -96,6 +96,7 @@ BeDoc’s configuration system is layered and cascading, supporting priorities a
 ```
 
 ### Wikitext for Lua
+
 ```json
 {
   "language": "lua",
@@ -109,10 +110,11 @@ BeDoc’s configuration system is layered and cascading, supporting priorities a
 
 ## Explore More
 
-- **[Parsers](parsers)**: Create custom parsers for your language or framework.
-- **[Printers](printers)**: Build printers for your preferred output format.
-- **[Hooks](hooks)**: Modify and enhance the documentation pipeline.
+- **[Parsers](doc/actions/parsers)**: Create custom parsers for your language or framework.
+- **[Printers](doc/actions/printers)**: Build printers for your preferred output format.
+- **[Hooks](doc/actions/hooks)**: Modify and enhance the documentation pipeline.
 
 ---
 
-Ready to elevate your documentation game? Install BeDoc and start building documentation that works for you!
+Ready to elevate your documentation game? Install BeDoc and start building
+documentation that works for you!
