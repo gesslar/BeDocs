@@ -47,6 +47,8 @@
       ]
     },
     "acceptsNode": {
+      "label": "Printer Accepts",
+      "description": "This object describes the criteria which it will accept.",
       "type": "object",
       "properties": {
         "dataType": {
