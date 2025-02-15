@@ -6,12 +6,12 @@
   "properties": {
     "accepts": {
       "label": "Printer Accepts",
-      "description": "This object describes the criteria which a printer will accept.",
+      "description": "Defines the expected data structure a printer will accept for processing.",
       "$ref": "#/definitions/acceptsRoot"
     },
     "provides": {
       "label": "Parser Provides",
-      "description": "This object describes the shape of the data a parser will provide.",
+      "description": "Defines the data structure a parser will produce as output.",
       "$ref": "#/definitions/providesRoot"
     }
   },
@@ -30,8 +30,10 @@
   "definitions": {
     "acceptsRoot": {
       "type": "object",
+      "description": "Defines the structure of the root object for accepted data in a printer.",
       "properties": {
         "root": {
+          "description": "The main entry point of the accepts definition.",
           "$ref": "#/definitions/acceptsNode"
         }
       },
@@ -41,8 +43,10 @@
     },
     "providesRoot": {
       "type": "object",
+      "description": "Defines the structure of the root object for provided data from a parser.",
       "properties": {
         "root": {
+          "description": "The main entry point of the provides definition.",
           "$ref": "#/definitions/providesNode"
         }
       },
@@ -52,10 +56,11 @@
     },
     "acceptsNode": {
       "type": "object",
+      "description": "Defines an individual node within the accepts structure.",
       "properties": {
         "dataType": {
           "label": "Data Type",
-          "description": "Informs the parser what type of data for this node it will accept. It can be string or an array of strings.",
+          "description": "Defines the expected data format for this node. It can be a single type or an array of types.",
           "oneOf": [
             {
               "type": "string",
@@ -81,9 +86,11 @@
           ]
         },
         "required": {
+          "description": "Boolean value asserting whether this value is required by the printer. Default is false if unspecified.",
           "type": "boolean"
         },
         "contains": {
+          "description": "Defines the structure of nested properties within this node. Each key must be a valid identifier and reference another node, ensuring a hierarchical data structure.",
           "type": "object",
           "patternProperties": {
             "^[a-zA-Z_][a-zA-Z0-9_]*$": {
@@ -99,8 +106,10 @@
     },
     "providesNode": {
       "type": "object",
+      "description": "Defines an individual node within the provides structure.",
       "properties": {
         "dataType": {
+          "description": "Declares the type of data this node provides. Must be a single string value from the predefined set.",
           "type": "string",
           "enum": [
             "object",
@@ -110,6 +119,7 @@
           ]
         },
         "contains": {
+          "description": "Defines the structure of nested properties within this node. Each key must be a valid identifier and reference another node, ensuring a hierarchical data structure.",
           "type": "object",
           "patternProperties": {
             "^[a-zA-Z_][a-zA-Z0-9_]*$": {
