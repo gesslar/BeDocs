@@ -50,12 +50,28 @@
       "type": "object",
       "properties": {
         "dataType": {
-          "type": "string",
-          "enum": [
-            "object",
-            "object[]",
-            "string",
-            "string[]"
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "object",
+                "object[]",
+                "string",
+                "string[]"
+              ]
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "object",
+                  "object[]",
+                  "string",
+                  "string[]"
+                ]
+              }
+            }
           ]
         },
         "required": {
