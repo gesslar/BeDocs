@@ -5,12 +5,10 @@
   "type": "object",
   "properties": {
     "accepts": {
-      "label": "Printer Accepts",
       "description": "Defines the expected data structure a printer will accept for processing.",
       "$ref": "#/definitions/acceptsRoot"
     },
     "provides": {
-      "label": "Parser Provides",
       "description": "Defines the data structure a parser will produce as output.",
       "$ref": "#/definitions/providesRoot"
     }
@@ -59,7 +57,6 @@
       "description": "Defines an individual node within the accepts structure.",
       "properties": {
         "dataType": {
-          "label": "Data Type",
           "description": "Defines the expected data format for this node. It can be a single type or an array of types.",
           "oneOf": [
             {
