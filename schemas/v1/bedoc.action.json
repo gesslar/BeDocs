@@ -54,6 +54,8 @@
       "type": "object",
       "properties": {
         "dataType": {
+          "label": "Data Type",
+          "description": "Informs the parser what type of data for this node it will accept. It can be string or an array of strings.",
           "oneOf": [
             {
               "type": "string",
