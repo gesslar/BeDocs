@@ -48,7 +48,7 @@ search:
   # Supports true or false (default)
   button: false
   # Focus the search input by pressing `ctrl + focus_shortcut_key` (or `cmd + focus_shortcut_key` on macOS)
-  focus_shortcut_key: 'k'
+  focus_shortcut_key: "k"
 
 # Enable or disable the side/mobile menu globally
 # Nav menu can also be selectively enabled or disabled using page variables or the minimal layout
@@ -82,3 +82,10 @@ kramdown:
   syntax_highlighter_opts:
     block:
       line_numbers: false
+
+defaults:
+  - scope:
+      path: "schemas/"
+
+plugins:
+  - jekyll-redirect-from

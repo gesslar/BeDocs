@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://bedoc.gesslar.dev/schemas/v1/bedoc.schema.json",
+  "title": "BeDoc Action Schema",
+  "type": "object",
+  "properties": {
+    "accepts": {
+      "$ref": "#/definitions/acceptsRoot"
+    },
+    "provides": {
+      "$ref": "#/definitions/providesRoot"
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "accepts"
+      ]
+    },
+    {
+      "required": [
+        "provides"
+      ]
+    }
+  ],
+  "definitions": {
+    "acceptsRoot": {
+      "type": "object",
+      "properties": {
+        "root": {
+          "$ref": "#/definitions/acceptsNode"
+        }
+      },
+      "required": [
+        "root"
+      ]
+    },
+    "providesRoot": {
+      "type": "object",
+      "properties": {
+        "root": {
+          "$ref": "#/definitions/providesNode"
+        }
+      },
+      "required": [
+        "root"
+      ]
+    },
+    "acceptsNode": {
+      "type": "object",
+      "properties": {
+        "dataType": {
+          "type": "string",
+          "enum": [
+            "object",
+            "object[]",
+            "string",
+            "string[]"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "contains": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-zA-Z_][a-zA-Z0-9_]*$": {
+              "$ref": "#/definitions/acceptsNode"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "dataType"
+      ]
+    },
+    "providesNode": {
+      "type": "object",
+      "properties": {
+        "dataType": {
+          "type": "string",
+          "enum": [
+            "object",
+            "object[]",
+            "string",
+            "string[]"
+          ]
+        },
+        "contains": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-zA-Z_][a-zA-Z0-9_]*$": {
+              "$ref": "#/definitions/providesNode"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "dataType"
+      ]
+    }
+  }
+}
