@@ -6,12 +6,12 @@
   "properties": {
     "accepts": {
       "label": "Printer Accepts",
-      "description": "This object describes the criteria which it will accept.",
+      "description": "This object describes the criteria which a printer will accept.",
       "$ref": "#/definitions/acceptsRoot"
     },
     "provides": {
       "label": "Parser Provides",
-      "description": "This object describes the shape of the data it will provide.",
+      "description": "This object describes the shape of the data a parser will provide.",
       "$ref": "#/definitions/providesRoot"
     }
   },
