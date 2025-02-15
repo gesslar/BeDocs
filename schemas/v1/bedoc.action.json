@@ -5,9 +5,13 @@
   "type": "object",
   "properties": {
     "accepts": {
+      "label": "Printer Accepts",
+      "description": "This object describes the criteria which it will accept.",
       "$ref": "#/definitions/acceptsRoot"
     },
     "provides": {
+      "label": "Parser Provides",
+      "description": "This object describes the shape of the data it will provide.",
       "$ref": "#/definitions/providesRoot"
     }
   },
@@ -47,8 +51,6 @@
       ]
     },
     "acceptsNode": {
-      "label": "Printer Accepts",
-      "description": "This object describes the criteria which it will accept.",
       "type": "object",
       "properties": {
         "dataType": {
