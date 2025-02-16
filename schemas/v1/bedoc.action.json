@@ -114,7 +114,8 @@
             "object",
             "object[]",
             "string",
-            "string[]"
+            "string[]",
+            "boolean"
           ]
         },
         "contains": {
