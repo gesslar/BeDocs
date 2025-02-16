@@ -65,7 +65,8 @@
                 "object",
                 "object[]",
                 "string",
-                "string[]"
+                "string[]",
+                "boolean"
               ]
             },
             {
@@ -76,7 +77,8 @@
                   "object",
                   "object[]",
                   "string",
-                  "string[]"
+                  "string[]",
+                  "boolean"
                 ]
               }
             }
