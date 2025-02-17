@@ -6,11 +6,11 @@
   "properties": {
     "accepts": {
       "description": "Defines the expected data structure a printer will accept for processing.",
-      "$ref": "#/definitions/acceptsRoot"
+      "$ref": "#/definitions/acceptsNode"
     },
     "provides": {
       "description": "Defines the data structure a parser will produce as output.",
-      "$ref": "#/definitions/providesRoot"
+      "$ref": "#/definitions/providesNode"
     }
   },
   "anyOf": [
@@ -26,32 +26,6 @@
     }
   ],
   "definitions": {
-    "acceptsRoot": {
-      "type": "object",
-      "description": "Defines the structure of the root object for accepted data in a printer.",
-      "properties": {
-        "root": {
-          "description": "The main entry point of the accepts definition.",
-          "$ref": "#/definitions/acceptsNode"
-        }
-      },
-      "required": [
-        "root"
-      ]
-    },
-    "providesRoot": {
-      "type": "object",
-      "description": "Defines the structure of the root object for provided data from a parser.",
-      "properties": {
-        "root": {
-          "description": "The main entry point of the provides definition.",
-          "$ref": "#/definitions/providesNode"
-        }
-      },
-      "required": [
-        "root"
-      ]
-    },
     "acceptsNode": {
       "type": "object",
       "description": "Defines an individual node within the accepts structure.",
