@@ -20,15 +20,19 @@
       "properties": {
         "type": {
           "const": "object"
-        },
-        "properties": {
-          "type": "object"
         }
       },
       "required": [
         "type"
       ],
-      "additionalProperties": false
+      "not": {
+        "properties": {
+          "required": {}
+        },
+        "required": [
+          "required"
+        ]
+      }
     }
   },
   "oneOf": [
