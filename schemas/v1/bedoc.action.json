@@ -5,12 +5,26 @@
   "type": "object",
   "properties": {
     "accepts": {
-      "description": "Defines the expected data structure a printer will accept for processing.",
-      "$ref": "#/definitions/acceptsNode"
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "object"
+        }
+      },
+      "required": [
+        "type"
+      ]
     },
     "provides": {
-      "description": "Defines the data structure a parser will produce as output.",
-      "$ref": "#/definitions/providesNode"
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "object"
+        }
+      },
+      "required": [
+        "type"
+      ]
     }
   },
   "oneOf": [
@@ -24,81 +38,5 @@
         "provides"
       ]
     }
-  ],
-  "definitions": {
-    "acceptsNode": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "oneOf": [
-            {
-              "type": "string",
-              "$ref": "#/$defs/dataTypes"
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "$ref": "#/$defs/dataTypes"
-              }
-            }
-          ]
-        },
-        "properties": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "$ref": "#/$defs/dataTypes"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "$ref": "#/$defs/dataTypes"
-                    }
-                  }
-                ]
-              },
-              "required": {
-                "type": "boolean"
-              }
-            }
-          }
-        }
-      },
-      "required": [
-        "type"
-      ]
-    },
-    "providesNode": {
-      "type": "object",
-      "description": "Defines an individual node within the provides structure.",
-      "properties": {
-        "type": {
-          "description": "Declares the type of data this node provides. Must be a single string value from the predefined set.",
-          "type": "string",
-          "$ref": "#/$defs/dataTypes"
-        }
-      },
-      "required": [
-        "type"
-      ]
-    }
-  },
-  "$defs": {
-    "dataTypes": {
-      "enum": [
-        "object",
-        "object[]",
-        "string",
-        "string[]",
-        "boolean"
-      ]
-    }
-  }
+  ]
 }
