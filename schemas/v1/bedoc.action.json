@@ -30,7 +30,7 @@
       "type": "object",
       "description": "Defines an individual node within the accepts structure.",
       "properties": {
-        "dataType": {
+        "type": {
           "description": "Defines the expected data format for this node. It can be a single type or an array of types.",
           "oneOf": [
             {
@@ -74,14 +74,14 @@
         }
       },
       "required": [
-        "dataType"
+        "type"
       ]
     },
     "providesNode": {
       "type": "object",
       "description": "Defines an individual node within the provides structure.",
       "properties": {
-        "dataType": {
+        "type": {
           "description": "Declares the type of data this node provides. Must be a single string value from the predefined set.",
           "type": "string",
           "enum": [
@@ -104,7 +104,7 @@
         }
       },
       "required": [
-        "dataType"
+        "type"
       ]
     }
   }
