@@ -28,10 +28,8 @@
   "definitions": {
     "acceptsNode": {
       "type": "object",
-      "description": "Defines an individual node within the accepts structure.",
       "properties": {
         "type": {
-          "description": "Defines the expected data format for this node. It can be a single type or an array of types.",
           "oneOf": [
             {
               "type": "string",
@@ -46,9 +44,31 @@
             }
           ]
         },
-        "required": {
-          "description": "Boolean value asserting whether this value is required by the printer. Default is false if unspecified.",
-          "type": "boolean"
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "$ref": "#/$defs/dataTypes"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "$ref": "#/$defs/dataTypes"
+                    }
+                  }
+                ]
+              },
+              "required": {
+                "type": "boolean"
+              }
+            }
+          }
         }
       },
       "required": [
