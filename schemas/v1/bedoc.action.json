@@ -13,7 +13,7 @@
       "$ref": "#/definitions/providesNode"
     }
   },
-  "anyOf": [
+  "oneOf": [
     {
       "required": [
         "accepts"
