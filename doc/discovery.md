@@ -1,7 +1,7 @@
 ---
 title: Discovery
 layout: default
-nav_order: 5
+nav_order: 7
 ---
 
 BeDoc offers a flexible, priority-based configuration system that adapts to

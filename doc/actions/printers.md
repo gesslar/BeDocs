@@ -2,6 +2,7 @@
 layout: default
 title: Printers
 parent: Actions
+nav_order: 2
 ---
 
 This guide explains how to create custom printers for BeDoc. Printers are

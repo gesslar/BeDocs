@@ -1,7 +1,7 @@
 ---
-title: Tools
 layout: default
-nav_order: 8
+title: Examples
+nav_order: 10
 ---
 
 {: .highlight-title }

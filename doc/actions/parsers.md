@@ -1,7 +1,8 @@
 ---
-layout: default
 title: Parsers
+layout: default
 parent: Actions
+nav_order: 1
 ---
 
 This guide explains how to create custom parsers for BeDoc. Parsers are

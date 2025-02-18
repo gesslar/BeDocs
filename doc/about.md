@@ -1,6 +1,7 @@
 ---
-layout: About
-nav_order: 99
+layout: default
+title: About
+nav_order: 90
 ---
 
 # Attributions

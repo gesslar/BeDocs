@@ -1,7 +1,7 @@
 ---
-title: Tools
+title: DirMap
 layout: default
-nav_order: 8
+parent: Objects
 ---
 
 {: .highlight-title }

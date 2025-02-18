@@ -1,7 +1,8 @@
 ---
-title: Tools
 layout: default
-nav_order: 8
+title: Contract Schema
+parent: Contracts
+nav_order: 2
 ---
 
 {: .highlight-title }
