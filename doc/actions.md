@@ -139,5 +139,5 @@ action.
 Each contract provides terms for what it will either output, in the case of
 parsers, or what it will accept, in the case of printers.
 
-Read the [Parser Guide](actions/contracts) to learn how to create parsers for
-BeDoc.
+Read the [Contracts Guide](actions/contracts) to learn how to create contracts
+for BeDoc.
