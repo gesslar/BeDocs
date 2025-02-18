@@ -19,7 +19,7 @@ as use it in your projects.
 #### npm
 
 ```bash
-npm install -g @gesslar/bedoc
+npm i -g @gesslar/bedoc
 ```
 
 #### yarn
@@ -48,6 +48,6 @@ yarn add --dev @gesslar/bedoc
 ## Next Steps
 
 After installation, you can start generating documentation with BeDoc. Check
-out the [Configuration Guide](/configuration) to learn how to configure the
+out the [Configuration Guide](configuration) to learn how to configure the
 tool via CLI options, environment variables, JSON files, and more, as well
 as how to incorporate BeDoc into your project workflow.

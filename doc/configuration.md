@@ -4,10 +4,16 @@ layout: default
 nav_order: 3
 ---
 
-BeDoc offers a flexible, priority-based configuration system that adapts to
-different use cases. It allows developers to configure the tool via CLI
-options, environment variables, JSON files, `package.json` entries, and
-defaults, ensuring seamless integration with diverse workflows.
+BeDoc offers a flexible, cascading, priority-based configuration system that
+adapts to different use cases. It allows developers to configure the tool via
+
+- CLI options
+- environment variables
+- JSON5 configuration files
+- YAML configuration files
+- `package.json` entries
+
+with fallback defaults, ensuring seamless integration with diverse workflows.
 
 ---
 
@@ -15,22 +21,23 @@ defaults, ensuring seamless integration with diverse workflows.
 
 The following configuration fields are supported by BeDoc:
 
-|    **Field**    | **Description**                        | **Required** |         **Example**         |
-| :-------------: | :------------------------------------- | :----------: | :-------------------------: |
-|   `language`    | Specifies the language parser to use   |     Yes      |       `"javascript"`        |
-|    `format`     | Defines the output format              |     Yes      |        `"markdown"`         |
-|     `input`     | Files or directories to include        |     Yes      |       `"src/**/*.js"`       |
-|    `exclude`    | Files or directories to exclude        |      No      |   `["src/**/*.test.js"]`    |
-|    `output`     | Output directory for generated docs    |      No      |        `"docs/api"`         |
-|    `parser`     | Path to a custom parser module         |      No      | `"./engines/my-parser.js"`  |
-|    `printer`    | Path to a custom printer module        |      No      | `"./engines/my-printer.js"` |
-|    `config`     | Path to a JSON configuration file      |      No      |   `"./bedoc.config.json"`   |
-|     `mock`      | Enables mock mode for testing modules  |      No      |     `./test/bedoc-mock`     |
-|     `hooks`     | Path to a custom hooks module          |      No      |       `"./hooks.js"`        |
-|     `debug`     | Enables debug mode                     |      No      |                             |
-|  `debugLevel`   | Sets the verbosity of debug logs (0-4) |      No      |             `2`             |
-|  `hookTimeout`  | Maximum time (ms) for hooks to execute |      No      |           `5000`            |
-| `maxConcurrent` | Maximum concurrent files to process    |      No      |            `500`            |
+|    **Field**    | **Description**                                 | **Required** |         **Example**         |
+| :-------------: | :---------------------------------------------- | :----------: | :-------------------------: |
+|   `language`    | Specifies the language parser to use            |     Yes      |       `"javascript"`        |
+|    `format`     | Defines the output format                       |     Yes      |        `"markdown"`         |
+|     `input`     | Files or directories to include                 |     Yes      |      `["src/**/*.js"]`      |
+|    `exclude`    | Files or directories to exclude                 |      No      |   `["src/**/*.test.js"]`    |
+|    `output`     | Output directory for generated docs             |      No      |        `"docs/api"`         |
+|    `parser`     | Path to a JS module containing a parser action  |      No      | `"./engines/my-parser.js"`  |
+|    `printer`    | Path to a JS module containing a printer action |      No      | `"./engines/my-printer.js"` |
+|    `config`     | Path to a JSON5/YAML configuration file         |      No      |   `"./bedoc.config.json"`   |
+|      `sub`      | Subconfiguration options from config file       |      No      |
+|     `mock`      | Enables mock mode for testing modules           |      No      |     `./test/bedoc-mock`     |
+|     `hooks`     | Path to a custom hooks module                   |      No      |       `"./hooks.js"`        |
+|     `debug`     | Enables debug mode                              |      No      |                             |
+|  `debugLevel`   | Sets the verbosity of debug logs (0-4)          |      No      |             `2`             |
+|  `hookTimeout`  | Maximum time (ms) for hooks to execute          |      No      |           `5000`            |
+| `maxConcurrent` | Maximum concurrent files to process             |      No      |            `500`            |
 
 ### **Defaults**
 
@@ -51,22 +58,38 @@ item.
 **CLI**, **Environment Variables**: Multiple values are expressed as
 comma-separated strings.
 
-```bash
---input src/**/*.js,src/**/*.ts --exclude src/**/*.test.js
-```
+- CLI
 
-```bash
-BEDOC_INPUT="src/**/*.js,src/**/*.ts"
-BEDOC_EXCLUDE="src/**/*.test.js"
-```
+  ```bash
+  --input src/**/*.js,src/**/*.ts --exclude src/**/*.test.js
+  ```
 
-**JSON**: These values are represented as arrays of strings. Such as in
-a custom configuration file, or `package.json`.
+- Environment variables
 
-```json
-"input": ["src/**/*.js", "src/**/*.ts"]
-"exclude": ["src/**/*.test.js"]
-```
+  ```bash
+  BEDOC_INPUT="src/**/*.js,src/**/*.ts"
+  BEDOC_EXCLUDE="src/**/*.test.js"
+  ```
+
+**JSON5**, **YAML**: These values are represented as arrays of strings. Such
+as in a custom configuration file, or `package.json`.
+
+- JSON
+
+  ```json
+  "input": ["src/**/*.js", "src/**/*.ts"]
+  "exclude": ["src/**/*.test.js"]
+  ```
+
+- YAML
+
+  ```yaml
+  input:
+    - src/**/*.js
+    - src/**/*.ts
+  exclude:
+    - src/**/*.test.js
+  ```
 
 ### Exclusivity
 
@@ -83,20 +106,25 @@ specifying a language will find a matching parser, whereas, specifying a
 parser will use that parser directly. The same is true of `format` and
 `printer`.
 
+{: .note-title }
+> Mock configuration
+>
+> While not exclusive, the `mock` option will simply ignore all of `language`,
+> `parser`, `format`, and `printer` when present.
+
 ### Discovery
 
 BeDoc will automatically discover and load parsers and printers based on the
 configuration provided. This allows for seamless integration of custom modules.
 
 Discovery will search in the global `node_modules` directory, as well as the
-local project directory. Except in the case of `parser` and `printer`, or
-when a [mock path](#mock-mode) is provided.
+local project directory. When using the `language` and `format` options, BeDoc will attempt to match parser and printer actions in these locations.
 
-Read more about [Discovery](/discovery).
+Read more about [Discovery](discovery).
 
 ### Mock Mode
 
-When a `mock` path is provided, BeDoc will use mock parsers and printers
+When a `mock` path is provided, BeDoc will only use mock parsers and printers
 located there for testing. This allows you to test your documentation workflow
 without needing to install custom modules. Simply provide the path to the mock
 directory and BeDoc will "discover" the mock modules there.
@@ -106,86 +134,93 @@ be loaded. This is useful for rapid iteration and testing of custom modules.
 
 ## Configuration Hierarchy
 
-BeDoc resolves configurations based on the following priority (highest to
-lowest):
+BeDoc offers a cascading configuration system that prioritises the resolution
+of configuration options.
 
-### 1. Explicit CLI Options
+1. **CLI** - Options typed at the CLI will be rendered first, but are also the
+   first to be overriden by additional configurations that follow, if present.
 
    ```bash
    bedoc -l javascript -f markdown -i "src/**/*.js" -o docs
    ```
 
-   | **Option**        | **Alias** | **Description**                     | **Default** |
-   | ----------------- | :-------: | ----------------------------------- | :---------: |
-   | `--language`      |   `-l`    | Language to be parsed               |             |
-   | `--format`        |   `-f`    | Output format                       |             |
-   | `--input`         |   `-i`    | Files or directories to include     |             |
-   | `--exclude`       |   `-x`    | Files or directories to exclude     |             |
-   | `--output`        |   `-o`    | Output directory                    |             |
-   | `--hooks`         |   `-k`    | Path to custom hooks module         |             |
-   | `--parser`        |   `-p`    | Path to custom parser module        |             |
-   | `--printer`       |   `-P`    | Path to custom printer module       |             |
-   | `--config`        |   `-c`    | Path to JSON config file            |             |
-   | `--mock`          |   `-m`    | Path to mock parsers and printers   |   `false`   |
-   | `--debug`         |   `-d`    | Enable debug mode                   |   Absent    |
-   | `--debugLevel`    |   `-D`    | Set debug verbosity (0-4)           |     `0`     |
-   | `--hookTimeout`   |   `-T`    | Maximum time (ms) for hooks         |   `5000`    |
-   | `--maxConcurrent` |   `-C`    | Maximum concurrent files to process |    `10`     |
+2. **Environment variables** - Options provided via environment variables
+   should be expressed in all capital letters, prefixed by `BEDOC_`.
 
-### 2. Environment Variables
+   - Bash
 
-Configuration fields can also be set via environment variables. Use the
-`BEDOC_` prefix followed by the field name in uppercase.
+     ```bash
+      export BEDOC_LANGUAGE=javascript
+      export BEDOC_FORMAT=markdown
+      export BEDOC_INPUT=src/**/*.js
+      export BEDOC_OUTPUT=docs
+      export BEDOC_HOOKTIMEOUT=5000
+     ```
 
-   For **Bash**:
-   ```bash
-   export BEDOC_LANGUAGE=javascript
-   export BEDOC_FORMAT=markdown
-   export BEDOC_INPUT="src/**/*.js"
-   export BEDOC_OUTPUT="docs"
-   export BEDOC_HOOKTIMEOUT=5000
-   ```
+    - Windows
 
-   For **Windows**:
-   ```powershell
-   set BEDOC_LANGUAGE=javascript
-   set BEDOC_FORMAT=markdown
-   set BEDOC_INPUT="src/**/*.js"
-   set BEDOC_OUTPUT=docs
-   set BEDOC_HOOKTIMEOUT=5000
-   ```
+      ```powershell
+      set BEDOC_LANGUAGE=javascript
+      set BEDOC_FORMAT=markdown
+      set BEDOC_INPUT="src/**/*.js"
+      set BEDOC_OUTPUT=docs
+      set BEDOC_HOOKTIMEOUT=5000
+      ```
 
-### 3. JSON Config File
+3. **JSON5/YAML Configuration File** - Configuration file options may be
+   expressed in either JSON5 or YAML.
 
-   Example `bedoc.config.json`:
-   ```json
-   {
-     "language": "javascript",
-     "format": "markdown",
-     "input": ["src/**/*.js"],
-     "output": "docs/api",
-     "exclude": ["src/**/*.test.js"],
-     "debug": true,
-     "hookTimeout": 5000
-   }
-   ```
+     {: .note }
+      > 🙄 Yes, regular JSON is fine, too, and so is JSONC. Since JSON5 is a
+      > superset, *blahblahblah*, you can totally use all of them, but JSON5 is
+      > prettier and you should 💯 be using it, boomer.
 
-### 4. `package.json` Entries
+     - JSON5
 
-   Example `package.json`:
-   ```json
-   {
-     "name": "my-project",
-     "version": "1.0.0",
-     "bedoc": {
-       "language": "python",
-       "format": "html",
-       "input": ["src/**/*.py"],
-       "output": "docs/html",
-       "hookTimeout": 5000
-     }
-   }
-   ```
+       ```text
+       {
+         language: "javascript",
+         format: "markdown",
+         input: ["src/**/*.js"],
+         exclude: ["src/**/*.test.js"],
+         output: "docs/api",
+         debug: true,
+         hookTimeout: 5000,
+       }
+       ```
+
+     - YAML
+
+       ```yaml
+       language: javascript
+       format: markdown
+       input:
+         - src/**/*.js
+       exclude:
+         - src/**/*.test.js
+       output: docs/api
+       debug: true
+       hooktTimeout: 5000
+       ```
+
+4. **`package.json` Entries** - In your project's package.json file, you may
+   also include a `bedoc` object that contains configuration elements.
+
+      ```json
+      {
+        "name": "my-project",
+        "version": "1.0.0",
+        "bedoc": {
+          "language": "python",
+          "format": "html",
+          "input": ["src/**/*.py"],
+          "output": "docs/html",
+          "hookTimeout": 5000
+        }
+      }
+  ```
+
+5. Any [defaults](#defaults) not specifically expressed will be added last.
 
 ## Advanced Use Cases
 
@@ -203,6 +238,79 @@ options are resolved and merged in the order of precedence based on the
 
 Configuration fields like `input` and `output` support glob patterns, enabling
 dynamic inclusion or exclusion of files.
+
+### Subconfigurations
+
+Subconfigurations provide the opportunity for a configuration file to have
+context-specific configurations, enabling you to support multiple different
+projects and subprojects from the same base project. Additionally, akin to
+VS Code's `launch.json`, you could express different configurations based
+on different conditions or environments.
+
+Everything at the root level of a configuration file is applied first, and
+any specified sub-configuration will override or add to the values provided
+by the configuration file as a whole.
+
+- **JSON**
+
+  ```json
+  {
+    "debugLevel": 4,
+    "maxConcurrent": 50,
+    "language": "lpc",
+    "format": "markdown",
+    "input": ["/mnt/d/bestmudever/lib/**/*.c"],
+    "output": "output/wiki/markdown",
+    "sub":
+    [
+      {
+        "name": "dev",
+        "variables": {
+          "env": {
+            "USER_NAME": "DEV_USER_NAME",
+            "PASSWORD": "DEV_PASSWORD"
+          }
+        }
+      },
+      {
+        "name": "prod",
+        "debugLevel": 0,
+        "maxConcurrent": 5,
+        "variables": {
+          "env": {
+            "USER_NAME": "PROD_USER_NAME",
+            "PASSWORD": "PROD_PASSWORD"
+          }
+        }
+      }
+    ]
+  }
+  ```
+
+- YAML
+
+  ```yaml
+  debugLevel: 4
+  maxConcurrent: 50
+  language: lpc
+  format: markdown
+  input:
+    - /mnt/d/bestmudever/lib/**/*.c
+  output: output/wiki/markdown
+  sub:
+    - name: dev
+      variables:
+        env:
+          USER_NAME: DEV_USER_NAME
+          PASSWORD: DEV_PASSWORD
+    - name: prod
+      debugLevel: 0
+      maxConcurrent: 5
+      variables:
+        env:
+          USER_NAME: PROD_USER_NAME
+          PASSWORD: PROD_PASSWORD
+  ```
 
 ## Debugging
 
