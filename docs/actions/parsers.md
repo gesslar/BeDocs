@@ -139,9 +139,9 @@ BeDoc provides multiple ways to test your parsers:
    bedoc -p ./my-parser.js -f markdown -i test/*.ml -o test/docs
    ```
 
-These options allow you to rapidly iterate on your parser implementation
-without needing to package and install it first. The direct file usage is
-particularly helpful during initial development and debugging.
+These options let you test your parser without packaging or installing it.
+The direct file usage is particularly helpful during initial development
+and debugging.
 
 ## Publishing Your Parser
 

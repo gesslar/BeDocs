@@ -41,11 +41,9 @@ production of that particular document.
 
 ### Printer
 
-Before passing the structured, parsed object to the printer, BeDoc will
-compare the produced document to ensure that it lives up to the contract
-the printer had agreed upon. Thus ensuring that the shape of the data does,
-in fact, match the data the printer had promised, no-fingers-crossed, that
-it would admit.
+Before sending the parsed object to the printer, BeDoc ensures the produced
+document meets the contract the printer agreed to. This ensures the data
+structure truly matches what was promised—no fingers crossed.
 
 ## Schema
 
@@ -59,10 +57,10 @@ will prevent the action to which it belongs from being used.
 
 ### Getting meta with it
 
-Essentially, what is happening when you create a contract, is that you are
-defining a schema that describes the shape of the data the action
-is willing to work with. And this schema is governed by the BeDoc schema
-(which is governed by the JSON schema schema... anyway).
+When you create a contract, you're defining a schema that describes the
+shape of the data the action will accept. This schema follows the BeDoc
+schema (which, yes, follows the JSON schema schema... it's schemas all
+the way down).
 
 :::note
 
