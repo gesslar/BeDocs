@@ -4,6 +4,9 @@ layout: default
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 Installation of BeDoc is straightforward and can be done via npm or yarn. The
 tool was built and tested on Node.js v23.5.0.
 
@@ -16,34 +19,46 @@ BeDoc may be run as a standalone tool or as part of a project.
 Installing BeDoc globally enables you to run it from the command line as well
 as use it in your projects.
 
-#### npm
-
-```bash
-npm i -g @gesslar/bedoc
-```
-
-#### yarn
-
-```bash
-yarn global add @gesslar/bedoc
-```
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: "NPM", value: "npm"},
+    {label: "yarn", value: "yarn"},
+  ]}>
+  <TabItem value="npm">
+  ```bash
+  npm i -g @gesslar/bedoc
+  ```
+  </TabItem>
+  <TabItem value="yarn">
+  ```bash
+  yarn global add @gesslar/bedoc
+  ```
+  </TabItem>
+</Tabs>
 
 ### Project
 
 If you prefer to keep BeDoc local to your project, you can install it as a
 development dependency.
 
-#### npm
-
-```bash
-npm i -D @gesslar/bedoc
-```
-
-#### yarn
-
-```bash
-yarn add --dev @gesslar/bedoc
-```
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: "NPM", value: "npm"},
+    {label: "yarn", value: "yarn"},
+  ]}>
+  <TabItem value="npm">
+  ```bash
+ npm i -D @gesslar/bedoc
+  ```
+  </TabItem>
+  <TabItem value="yarn">
+  ```bash
+ yarn add --dev @gesslar/bedoc
+  ```
+  </TabItem>
+</Tabs>
 
 ## Next Steps
 

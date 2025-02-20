@@ -4,6 +4,9 @@ layout: default
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 BeDoc offers a flexible, cascading, priority-based configuration system that
 adapts to different use cases. It allows developers to configure the tool via
 
@@ -58,31 +61,49 @@ item.
 **CLI**, **Environment Variables**: Multiple values are expressed as
 comma-separated strings.
 
-- CLI
-
+<Tabs
+  defaultValue="cli"
+  values={[
+    {label: "CLI", value: "cli"},
+    {label: "bash", value: "bash"},
+    {label: "Powershell", value: "ps"},
+  ]}>
+  <TabItem value="cli">
   ```bash
   --input src/**/*.js,src/**/*.ts --exclude src/**/*.test.js
   ```
-
-- Environment variables
-
+  </TabItem>
+  <TabItem value="bash">
   ```bash
   BEDOC_INPUT="src/**/*.js,src/**/*.ts"
   BEDOC_EXCLUDE="src/**/*.test.js"
   ```
+  </TabItem>
+  <TabItem value="ps">
+  ```powershell
+  set BEDOC_INPUT="src/**/*.js,src/**/*.ts"
+  set BEDOC_EXCLUDE="src/**/*.test.js"
+  ```
+  </TabItem>
+</Tabs>
 
 **JSON5**, **YAML**: These values are represented as arrays of strings. Such
 as in a custom configuration file, or `package.json`.
 
-- JSON
-
-  ```json
-  "input": ["src/**/*.js", "src/**/*.ts"]
-  "exclude": ["src/**/*.test.js"]
+<Tabs
+  defaultValue="json5"
+  values={[
+    {label: "JSON5 😸", value: "json5"},
+    {label: "YAML 😸", value: "yaml"},
+    {label: "JSON 🙄", value: "json"},
+  ]}>
+  <TabItem value="json5">
+  ```json5
+  input: ["src/**/*.js", "src/**/*.ts"]
+  exclude: ["src/**/*.test.js"]
   ```
-
-- YAML
-
+  </TabItem>
+  <TabItem value="yaml">
   ```yaml
   input:
     - src/**/*.js
@@ -90,6 +111,14 @@ as in a custom configuration file, or `package.json`.
   exclude:
     - src/**/*.test.js
   ```
+  </TabItem>
+  <TabItem value="json">
+  ```json
+  "input": ["src/**/*.js", "src/**/*.ts"]
+  "exclude": ["src/**/*.test.js"]
+  ```
+  </TabItem>
+</Tabs>
 
 ### Exclusivity
 
@@ -106,11 +135,12 @@ specifying a language will find a matching parser, whereas, specifying a
 parser will use that parser directly. The same is true of `format` and
 `printer`.
 
-# ADMONITION HERE
-> Mock configuration
->
-> While not exclusive, the `mock` option will simply ignore all of `language`,
-> `parser`, `format`, and `printer` when present.
+:::info[Mock configuration]
+
+While not exclusive, the [`mock`](#mock-mode) option will simply ignore all
+of `language`, `parser`, `format`, and `printer` when present.
+
+:::
 
 ### Discovery
 
