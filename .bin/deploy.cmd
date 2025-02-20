@@ -9,4 +9,3 @@ echo Pushing to repository...
 git push
 
 echo Done!
-pause
