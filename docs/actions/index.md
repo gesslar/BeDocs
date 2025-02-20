@@ -14,7 +14,7 @@ The `parse` action reads source code files, extracts documentation information,
 and generates a structured output that can be consumed by printers. Parsers are
 responsible for analyzing the source code and producing a structured output.
 
-Read the [Parser Guide](actions/parsers) to learn how to create parsers for
+Read the [Parser Guide](/actions/parsers) to learn how to create parsers for
 BeDoc.
 
 ## Print
@@ -23,7 +23,7 @@ The `print` action transforms parsed documentation into specific output formats
 like Markdown, HTML, or any other format you need. Printers are responsible for
 formatting the documentation content.
 
-Read the [Printer Guide](actions/printers) to learn how to create printers for
+Read the [Printer Guide](/actions/printers) to learn how to create printers for
 BeDoc.
 
 ## Hooks
@@ -33,7 +33,7 @@ documentation process by injecting custom logic at specific points. With full
 async/await support, hooks can integrate with external services, APIs, and
 tools.
 
-Read the [Hooks Guide](hooks) to learn how to create custom hooks for BeDoc.
+Read the [Hooks Guide](/actions/hooks) to learn how to create custom hooks for BeDoc.
 
 ## Module
 

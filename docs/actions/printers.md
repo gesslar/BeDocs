@@ -17,7 +17,7 @@ A BeDoc printer consists of two main parts:
 3. **Parser Object**: Implements the printer logic. (_required_)
 4. **Hooks**: Supports [hook points](/actions/hooks) for custom logic. (_optional_, _external_)
 
-A printer action is contained in a [JavaScript action file](/actions#action-file).
+A printer action is contained in a JavaScript action file.
 
 Here's the minimal structure for a BeDoc printer:
 

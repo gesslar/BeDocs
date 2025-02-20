@@ -67,13 +67,13 @@ Integrate BeDoc into CI/CD pipelines with GitHub Actions or similar tools to kee
 ## Feature Highlights
 
 ### Parsers: Adapt to Any Language
-BeDoc’s parsers analyze your code and extract meaningful documentation, even for niche languages. Create custom parsers to support any syntax or annotations. [Learn More About Parsers](parsers)
+BeDoc’s parsers analyze your code and extract meaningful documentation, even for niche languages. Create custom parsers to support any syntax or annotations. [Learn More About Parsers](actions/parsers)
 
 ### Printers: Flexible Outputs
-Printers transform parsed data into your desired format, from Markdown to less common formats like Wikitext. Async support enables powerful integrations like fetching additional data during formatting. [Learn More About Printers](printers)
+Printers transform parsed data into your desired format, from Markdown to less common formats like Wikitext. Async support enables powerful integrations like fetching additional data during formatting. [Learn More About Printers](actions/printers)
 
 ### Hooks: Customize Every Step
-Hooks allow you to extend and modify the documentation process at any point. Use them to add metadata, validate content, or integrate with APIs—all with async capabilities. [Learn More About Hooks](hooks)
+Hooks allow you to extend and modify the documentation process at any point. Use them to add metadata, validate content, or integrate with APIs—all with async capabilities. [Learn More About Hooks](actions/hooks)
 
 ### Priority-Based Configuration
 BeDoc’s configuration system is layered and cascading, supporting priorities across JSON files, environment variables, CLI options, and package.json entries.

@@ -17,7 +17,7 @@ A BeDoc parser consists of four parts:
 3. **Parser Object**: Implements the parsing logic. (_required_)
 4. **Hooks**: Supports [hook points](/actions/hooks) for custom logic. (_optional_, _external_)
 
-A parser action is contained in a [JavaScript action file](/actions#action-file).
+A parser action is contained in a JavaScript action file.
 
 Here's the minimal structure for a BeDoc parser:
 

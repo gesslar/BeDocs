@@ -10,7 +10,7 @@ to successfully cooperate in traversing the BeDoc pipeline from source
 text to produced text.
 
 A contract is either a JSON5 or YAML string that contains terms according to
-a [schema](schema) of what it will provide or accept.
+a [schema](/actions/contracts/schema) of what it will provide or accept.
 
 ## Discovery
 
@@ -22,7 +22,7 @@ agrees on a contract will be the ones selected for the job.
 :::tip[Best Practice]
 
 To reduce errors or mismatches, it is advised to either
-[specify](/configuration) a parser or printer pairing, or limit
+[specify](/start/configuration) a parser or printer pairing, or limit
 the number of potential matches of installed actions.
 
 :::
@@ -66,7 +66,7 @@ is willing to work with. And this schema is governed by the BeDoc schema
 
 :::note
 
-Read the [Schema Guide](schema) to learn even more dry content
+Read the [Schema Guide](./contracts/schema) to learn even more dry content
 about schemas.
 
 :::
