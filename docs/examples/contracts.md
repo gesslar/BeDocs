@@ -133,62 +133,62 @@ accepts:
   <TabItem value="parser">
 ```json title="bedoc_parser_lpc.json"
 {
-  "$schema": "https://bedoc.gesslar.dev/schemas/v1/bedoc.action.json",
-  "provides": {
-    "type": "object",
-    "properties": {
-      "functions": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
+  $schema: "https://bedoc.gesslar.dev/schemas/v1/bedoc.action.json",
+  provides: {
+    type: "object",
+    properties: {
+      functions: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            name: {
+              type: "string"
             },
-            "description": {
-              "type": "array",
-              "items": {
-                "type": "string"
+            description: {
+              type: "array",
+              items: {
+                type: "string"
               }
             },
-            "param": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string"
+            param: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  type: {
+                    type: "string"
                   },
-                  "name": {
-                    "type": "string"
+                  name: {
+                    type: "string"
                   },
-                  "content": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
+                  content: {
+                    type: "array",
+                    items: {
+                      type: "string"
                     }
                   }
                 }
               }
             },
-            "return": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string"
+            return: {
+              type: "object",
+              properties: {
+                type: {
+                  type: "string"
                 },
-                "content": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                content: {
+                  type: "array",
+                  items: {
+                    type: "string"
                   }
                 }
               }
             },
-            "example": {
-              "type": "array",
-              "items": {
-                "type": "string"
+            example: {
+              type: "array",
+              items: {
+                type: "string"
               }
             }
           }
@@ -200,97 +200,97 @@ accepts:
 ```
   </TabItem>
   <TabItem value="printer">
-  ```json title="bedoc_printer_wikitext.json"
+```json title="bedoc_printer_wikitext.json"
 {
-  "$schema": "https://bedoc.gesslar.dev/schemas/v1/bedoc.action.json",
-  "accepts": {
-    "type": "object",
-    "required": [
-      "functions"
+  $schema: "https://bedoc.gesslar.dev/schemas/v1/bedoc.action.json",
+  accepts: {
+    type: "object",
+    required: [
+      functions
     ],
-    "properties": {
-      "functions": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "required": [
+    properties: {
+      functions: {
+        type: "array",
+        items: {
+          type: "object",
+          required: [
             "name"
           ],
-          "properties": {
-            "name": {
-              "type": "string"
+          properties: {
+            name: {
+              type: "string"
             },
-            "description": {
-              "type": "array",
-              "items": {
-                "type": "string"
+            description: {
+              type: "array",
+              items: {
+                type: "string"
               }
             },
-            "param": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "required": [
+            param: {
+              type: "array",
+              items: {
+                type: "object",
+                required: [
                   "name",
                   "type"
                 ],
-                "properties": {
-                  "type": {
-                    "oneOf": [
+                properties: {
+                  type: {
+                    oneOf: [
                       {
-                        "type": "string"
+                        type: "string"
                       },
                       {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
+                        type: "array",
+                        items: {
+                          type: "string"
                         }
                       }
                     ]
                   },
-                  "name": {
-                    "type": "string"
+                  name: {
+                    type: "string"
                   },
-                  "content": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
+                  content: {
+                    type: "array",
+                    items: {
+                      type: "string"
                     }
                   }
                 }
               }
             },
-            "return": {
-              "type": "object",
-              "required": [
+            return: {
+              type: "object",
+              required: [
                 "type"
               ],
-              "properties": {
-                "type": {
-                  "oneOf": [
+              properties: {
+                type: {
+                  oneOf: [
                     {
-                      "type": "string"
+                      type: "string"
                     },
                     {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      type: "array",
+                      items: {
+                        type: "string"
                       }
                     }
                   ]
                 },
-                "content": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                content: {
+                  type: "array",
+                  items: {
+                    type: "string"
                   }
                 }
               }
             },
-            "example": {
-              "type": "array",
-              "items": {
-                "type": "string"
+            example: {
+              type: "array",
+              items: {
+                type: "string"
               }
             }
           }

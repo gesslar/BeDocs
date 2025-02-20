@@ -65,7 +65,7 @@ comma-separated strings.
   defaultValue="cli"
   values={[
     {label: "CLI", value: "cli"},
-    {label: "bash", value: "bash"},
+    {label: "Bash", value: "bash"},
     {label: "Powershell", value: "ps"},
   ]}>
   <TabItem value="cli">
@@ -75,14 +75,14 @@ comma-separated strings.
   </TabItem>
   <TabItem value="bash">
   ```bash
-  BEDOC_INPUT="src/**/*.js,src/**/*.ts"
-  BEDOC_EXCLUDE="src/**/*.test.js"
+  export BEDOC_INPUT="src/**/*.js,src/**/*.ts"
+  export BEDOC_EXCLUDE="src/**/*.test.js"
   ```
   </TabItem>
   <TabItem value="ps">
   ```powershell
-  set BEDOC_INPUT="src/**/*.js,src/**/*.ts"
-  set BEDOC_EXCLUDE="src/**/*.test.js"
+  set BEDOC_INPUT=src/**/*.js,src/**/*.ts
+  set BEDOC_EXCLUDE=src/**/*.test.js
   ```
   </TabItem>
 </Tabs>
@@ -98,7 +98,7 @@ as in a custom configuration file, or `package.json`.
     {label: "JSON 🙄", value: "json"},
   ]}>
   <TabItem value="json5">
-  ```json5
+  ```json
   input: ["src/**/*.js", "src/**/*.ts"]
   exclude: ["src/**/*.test.js"]
   ```
@@ -177,18 +177,22 @@ of configuration options.
 2. **Environment variables** - Options provided via environment variables
    should be expressed in all capital letters, prefixed by `BEDOC_`.
 
-   - Bash
-
-     ```bash
+    <Tabs
+      defaultValue="bash"
+      values={[
+        {label: "Bash", value: "bash"},
+        {label: "Powershell", value: "ps"},
+      ]}>
+      <TabItem value="bash">
+      ```bash
       export BEDOC_LANGUAGE=javascript
       export BEDOC_FORMAT=markdown
       export BEDOC_INPUT=src/**/*.js
       export BEDOC_OUTPUT=docs
       export BEDOC_HOOKTIMEOUT=5000
-     ```
-
-    - Windows
-
+      ```
+      </TabItem>
+      <TabItem value="ps">
       ```powershell
       set BEDOC_LANGUAGE=javascript
       set BEDOC_FORMAT=markdown
@@ -196,58 +200,69 @@ of configuration options.
       set BEDOC_OUTPUT=docs
       set BEDOC_HOOKTIMEOUT=5000
       ```
+      </TabItem>
+    </Tabs>
 
 3. **JSON5/YAML Configuration File** - Configuration file options may be
    expressed in either JSON5 or YAML.
 
-     # ADMONITION HERE
-      > 🙄 Yes, regular JSON is fine, too, and so is JSONC. Since JSON5 is a
-      > superset, *blahblahblah*, you can totally use all of them, but JSON5 is
-      > prettier and you should 💯 be using it, boomer.
+  ::: warning[On the topic of JSON 👴🏻]
 
-     - JSON5
+  🙄 Yes, regular JSON is fine, too, and so is JSONC. Since JSON5 is a
+  superset, *blahblahblah*, you can totally use all of them, but JSON5 is
+  prettier and you should 💯 be using it, boomer.
 
-       ```text
-       {
-         language: "javascript",
-         format: "markdown",
-         input: ["src/**/*.js"],
-         exclude: ["src/**/*.test.js"],
-         output: "docs/api",
-         debug: true,
-         hookTimeout: 5000,
-       }
-       ```
+  :::
 
-     - YAML
-
-       ```yaml
-       language: javascript
-       format: markdown
-       input:
-         - src/**/*.js
-       exclude:
-         - src/**/*.test.js
-       output: docs/api
-       debug: true
-       hooktTimeout: 5000
-       ```
+  <Tabs
+    defaultValue="json5"
+    values={[
+      {label: "JSON5", value: "json5"},
+      {label: "YAML", value: "yaml"},
+    ]}>
+    <TabItem value="json5">
+    ```json
+    {
+      language: "javascript",
+      format: "markdown",
+      input: ["src/**/*.js"],
+      exclude: ["src/**/*.test.js"],
+      output: "docs/api",
+      debug: true,
+      hookTimeout: 5000,
+      }
+    ```
+    </TabItem>
+    <TabItem value="yaml">
+    ```yaml
+    language: javascript
+    format: markdown
+    input:
+      - src/**/*.js
+    exclude:
+      - src/**/*.test.js
+    output: docs/api
+    debug: true
+    hooktTimeout: 5000
+    ```
+    </TabItem>
+  </Tabs>
 
 4. **`package.json` Entries** - In your project's package.json file, you may
    also include a `bedoc` object that contains configuration elements.
 
-      ```json
-      {
-        "name": "my-project",
-        "version": "1.0.0",
-        "bedoc": {
-          "language": "python",
-          "format": "html",
-          "input": ["src/**/*.py"],
-          "output": "docs/html",
-          "hookTimeout": 5000
-        }
-      }
+  ```json
+  {
+    "name": "my-project",
+    "version": "1.0.0",
+    "bedoc": {
+      "language": "python",
+      "format": "html",
+      "input": ["src/**/*.py"],
+      "output": "docs/html",
+      "hookTimeout": 5000
+    }
+  }
   ```
 
 5. Any [defaults](#defaults) not specifically expressed will be added last.
@@ -281,44 +296,48 @@ Everything at the root level of a configuration file is applied first, and
 any specified sub-configuration will override or add to the values provided
 by the configuration file as a whole.
 
-- **JSON**
-
+<Tabs
+  defaultValue="json"
+  values={[
+    {label: "JSON5", value: "json"},
+    {label: "YAML", value: "yaml"},
+  ]}>
+  <TabItem value="json">
   ```json
   {
-    "debugLevel": 4,
-    "maxConcurrent": 50,
-    "language": "lpc",
-    "format": "markdown",
-    "input": ["/mnt/d/bestmudever/lib/**/*.c"],
-    "output": "output/wiki/markdown",
-    "sub":
+    debugLevel: 4,
+    maxConcurrent: 50,
+    language: "lpc",
+    format: "markdown",
+    input: ["/mnt/d/bestmudever/lib/**/*.c"],
+    output: "output/wiki/markdown",
+    sub:
     [
       {
-        "name": "dev",
-        "variables": {
-          "env": {
-            "USER_NAME": "DEV_USER_NAME",
-            "PASSWORD": "DEV_PASSWORD"
+        name: "dev",
+        variables: {
+          env: {
+            USER_NAME: "DEV_USER_NAME",
+            PASSWORD: "DEV_PASSWORD"
           }
         }
       },
       {
-        "name": "prod",
-        "debugLevel": 0,
-        "maxConcurrent": 5,
-        "variables": {
-          "env": {
-            "USER_NAME": "PROD_USER_NAME",
-            "PASSWORD": "PROD_PASSWORD"
+        name: "prod",
+        debugLevel: 0,
+        maxConcurrent: 5,
+        variables: {
+          env: {
+            USER_NAME: "PROD_USER_NAME",
+            PASSWORD: "PROD_PASSWORD"
           }
         }
       }
     ]
   }
   ```
-
-- YAML
-
+  </TabItem>
+  <TabItem value="yaml">
   ```yaml
   debugLevel: 4
   maxConcurrent: 50
@@ -341,6 +360,8 @@ by the configuration file as a whole.
           USER_NAME: PROD_USER_NAME
           PASSWORD: PROD_PASSWORD
   ```
+  </TabItem>
+</Tabs>
 
 ## Debugging
 

@@ -131,6 +131,7 @@ BeDoc provides multiple ways to test your parsers:
    ```
 
 2. **Direct File Usage**: Test your parser file directly without installation:
+
    ```bash
    bedoc --parser ./my-parser.js --format markdown -i test/*.ml -o test/docs
 
@@ -147,7 +148,7 @@ particularly helpful during initial development and debugging.
 When ready to publish, package your parser following BeDoc's naming and
 structure conventions:
 
-```jsonc
+```json
 {
   "name": "bedoc-mylang-parser",  // bedoc-<language>-parser-<anything_else>
   "version": "1.0.0",
