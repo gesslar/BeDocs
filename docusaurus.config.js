@@ -34,6 +34,12 @@ const config = {
 
   trailingSlash: false,
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -53,7 +59,7 @@ const config = {
       ({
         docs: {
           routeBasePath: "/",
-          // sidebarPath: './sidebars.js',
+          sidebarPath: './sidebars.js',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -85,10 +91,19 @@ const config = {
         },
         items: [
           { to: "/start", label: "Getting Started", position: "left" },
+          { to: "/category/examples", label: "Examples", position: "left" },
+          // {
+          //   href: 'https://github.com/gesslar/BeDoc',
+          //   // label: 'GitHub',
+          //   className: "header-github-link", "aria-label": "GitHub repository",
+          //   position: 'right',
+          //   type: "icon"
+          // },
           {
             href: 'https://github.com/gesslar/BeDoc',
-            label: 'GitHub',
-            position: 'right',
+            position: "right",
+            className: "header--github-link",
+            "aria-label": "GitHub repository",
           },
         ],
       },

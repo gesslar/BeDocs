@@ -25,3 +25,35 @@
   --ifm-color-primary-lighter: #a2d1ff;
   --ifm-color-primary-lightest: #d9ecff;
 }
+/*
+.header-github-link:hover {
+  opacity: 0.6;
+} */
+
+.header--github-link {
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  margin-right: 4px;
+  border-radius: 50%;
+  transition: background var(--ifm-transition-fast);
+}
+
+.header--github-link:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.header--github-link:before {
+  background: url("/img/line-md--github-loop.svg")
+    no-repeat;
+  content: "";
+  display: flex;
+  height: 24px;
+  width: 24px;
+}
+
+html[data-theme='dark'] .header--github-link:before {
+  background: url("/img/line-md--github-loop.svg")
+    no-repeat;
+  filter: invert(100%) brightness(85%);
+}

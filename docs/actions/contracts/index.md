@@ -15,7 +15,7 @@ a [schema](/actions/contracts/schema) of what it will provide or accept.
 ## Discovery
 
 During the [discovery](/start/discovery) phase, BeDoc attempts to match parsers
-with printers according to their contracts. If tehre are a number of parsers
+with printers according to their contracts. If there are a number of parsers
 and printers that share the same format or language, the first pair that
 agrees on a contract will be the ones selected for the job.
 

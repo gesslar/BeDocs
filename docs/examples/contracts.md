@@ -1,9 +1,14 @@
 ---
 title: Contracts
+sidebar: examplesSidebar
+description: Examples of action contracts in both YAML and JSON5.
+icon: fa-solid fa-lens
 ---
 
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
+
+<!-- <IIcon icon="line-md:cog-filled-loop" height="48" /> This is a GitHub icon. -->
 
 ## YAML
 
