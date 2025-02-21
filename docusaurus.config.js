@@ -8,6 +8,9 @@ import { themes as prismThemes } from 'prism-react-renderer';
 // import { remarkSnippet } from "./src/plugins/remark-snippet.js"
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+const announcedVersion = "1.0.0"
+
+const { vsDark: PrismLight, vsDark: PrismDark } = prismThemes
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -54,12 +57,13 @@ const config = {
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           routeBasePath: "/",
           sidebarPath: './sidebars.js',
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -84,14 +88,17 @@ const config = {
       },
 
       navbar: {
+        hideOnScroll: true,
         title: 'BeDoc',
         logo: {
           alt: 'BeDoc logo',
           src: 'img/project-management.png',
         },
         items: [
-          { to: "/start", label: "Getting Started", position: "left" },
-          { to: "/category/examples", label: "Examples", position: "left" },
+          { type: "doc", position: "left", docId: "start/index", label: "Docs", sidebarId: "docs" },
+          // { to: "/start", label: "Getting Started", position: "left" },
+          { type: "docSidebar", position: "left", sidebarId: "examples", label: "Examples" },
+          // { to: "/category/examples", label: "Examples", position: "left" },
           // {
           //   href: 'https://github.com/gesslar/BeDoc',
           //   // label: 'GitHub',
@@ -100,10 +107,36 @@ const config = {
           //   type: "icon"
           // },
           {
-            href: 'https://github.com/gesslar/BeDoc',
+            href: "/discord",
             position: "right",
-            className: "header--github-link",
+            title: "lol",
+            className: "header--svg-link",
             "aria-label": "GitHub repository",
+            "data-icon": "discord",
+          },
+          {
+            href: "/testimonials",
+            position: "right",
+            title: "What are people saying about BeDoc??",
+            className: "header--svg-link",
+            "aria-label": "What are people saying about BeDoc??",
+            "data-icon": "testimonials",
+          },
+          {
+            href: "/attribution",
+            position: "right",
+            title: "Look at my free stuff!",
+            className: "header--svg-link",
+            "aria-label": "Free stuff that I got",
+            "data-icon": "attribution",
+          },
+          {
+            href: "https://github.com/gesslar/BeDoc",
+            title: "GitHub repository",
+            position: "right",
+            className: "header--svg-link",
+            "aria-label": "GitHub repository",
+            "data-icon": "github",
           },
         ],
       },
@@ -115,9 +148,37 @@ const config = {
       },
 
       prism: {
-        theme: prismThemes.vsDark,
-        darkTheme: prismThemes.vsDark,
+        additionalLanguages: [
+          'powershell',
+          'bash',
+          'diff',
+          'json',
+        ],
+        magicComments: [
+          {
+            className: 'theme-code-block-highlighted-line',
+            line: 'highlight-next-line',
+            block: { start: 'highlight-start', end: 'highlight-end' },
+          },
+          {
+            className: 'code-block-error-line',
+            line: 'This will error',
+          },
+        ],
+        theme: PrismLight,
+        darkTheme: PrismDark,
       },
+
+      colorMode: {
+        defaultMode: "dark",
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
+
+      // announcementBar: {
+      // id: `announcementBar-v${announcedVersion}`,
+      // content: `🎉️ <b><a target="_blank" href="https://docusaurus.io/blog/releases/${announcedVersion}">Docusaurus v${announcedVersion}</a> is out!</b> 🥳️`,
+      // },
 
       scripts: [
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"

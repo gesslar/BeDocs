@@ -2,7 +2,7 @@
 title: Contracts
 sidebar: examplesSidebar
 description: Examples of action contracts in both YAML and JSON5.
-icon: fa-solid fa-lens
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs'

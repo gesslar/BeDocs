@@ -30,30 +30,55 @@
   opacity: 0.6;
 } */
 
-.header--github-link {
-  width: 32px;
-  height: 32px;
-  padding: 6px;
+/* General styling for all SVG buttons */
+.header--svg-link {
   margin-right: 4px;
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   transition: background var(--ifm-transition-fast);
+  /* border: 1px red solid; */
 }
 
-.header--github-link:hover {
+.header--svg-link:hover {
   background: var(--ifm-color-emphasis-200);
 }
 
-.header--github-link:before {
-  background: url("/img/line-md--github-loop.svg")
-    no-repeat;
+/* Use a CSS variable for dynamic background */
+.header--svg-link::before {
+  background: var(--svg-icon-url) no-repeat center center;
   content: "";
-  display: flex;
+  display: block;
+  /* border: black solid 1px; */
   height: 24px;
   width: 24px;
+  background-size: contain;
+  margin: auto; /* Ensures it's centered */
+  transform: translateX(-1px); /* Nudge it left */
 }
 
-html[data-theme='dark'] .header--github-link:before {
-  background: url("/img/line-md--github-loop.svg")
-    no-repeat;
+/* Set specific icons based on the data attribute */
+.header--svg-link[data-icon="github"]::before {
+  --svg-icon-url: url("/img/line-md--github-loop.svg");
+}
+
+.header--svg-link[data-icon="attribution"]::before {
+  --svg-icon-url: url("/img/gg--attribution.svg");
+}
+
+.header--svg-link[data-icon="discord"]::before {
+  --svg-icon-url: url("/img/meteor-icons--discord.svg");
+}
+
+.header--svg-link[data-icon="testimonials"]::before {
+  --svg-icon-url: url("/img/hugeicons--promotion.svg");
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .header--svg-link::before {
   filter: invert(100%) brightness(85%);
 }
