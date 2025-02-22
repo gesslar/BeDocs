@@ -8,34 +8,42 @@ config:
   layout: elk
 ---
 
-Discovery, in BeDoc, is about finding actions to handle your request.
-It is designed with the intent of enabling the pluggable nature of
-the ecosystem.
+# Discovery in BeDoc
 
-As such, it provides for specifying language and format, rather than
-a specific parser or printer. But, it does not prohibit specificity.
+Discovery in BeDoc is the process of locating the right actions to handle your request. Instead of requiring you to manually specify a parser or printer, BeDoc allows you to define **what** you need in terms of language and format, and it will take care of **how** that need is fulfilled.
 
-During the discovery process, BeDoc will:
+However, if you prefer to be explicit, you can still specify a particular parser or printer—Discovery won’t stand in your way.
 
-1. accept your
-   1. `mock` directory, *or*
-   2. any configuration expression of
-      1. language and/or format directives, and/or
-      2. parser and/or printer directives
-   3. Search the global NPM `node_modules`
-   4. Search the local project's **`node_modules`**
-2. review all findings and ensure that each
-   1. has proper [`meta`](/actions#actions) information
-   2. has a valid [`action`](/actions#actions) object
-   3. has valid [`contract`](/actions/contracts) terms
+## How It Works
+During the Discovery process, BeDoc will:
 
-And once it has done all of that, it takes what it has found and then
-finds a pairing that will get the job done. If it finds more than one
-pairing, BeDoc will error. If it founds no pairing, BeDoc will error.
-Play nice with BeDoc, it is sensitive.
+1. **accept your input**, which may include:
+   - a `mock` directory, *or*
+   - any configuration expression specifying:
+     - language and/or format directives
+     - parser and/or printer directives
+2. **search for applicable actions** within:
+   - the global NPM `node_modules`
+   - the local project's **`node_modules`**
+3. **validate all findings**, ensuring that each:
+   - contains proper [`meta`](/actions#actions) information
+   - defines a valid [`action`](/actions#actions) object
+   - adheres to [`contract`](/actions/contracts) terms
 
-Also, here's a Mermaid drawing of the Discovery process. That there
-are no mermaids is incredibly disappointing.
+:::warning[Configure Decisively]
+
+Once BeDoc has compiled all viable options, it attempts to pair a parser with a printer. However, BeDoc does **not** do indecision:
+
+- if it finds more than one pairing, it errors.
+- if it finds no valid pairings, it errors.
+- BeDoc does not handle ambiguity well. Handle with care.
+
+:::
+
+## The Discovery Flowchart
+
+Also, here’s a **Mermaid diagram** representing the Discovery process.
+_(That there are no actual mermaids involved remains a source of deep disappointment.)_
 
 ```mermaid
 ---

@@ -4,6 +4,8 @@ layout: default
 sidebar_position: 2
 ---
 
+Inline CSS example: <code className="language-css">`p { color: red; }`</code>
+
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
@@ -184,10 +186,10 @@ of configuration options.
         {label: "Powershell", value: "ps"},
       ]}>
       <TabItem value="bash">
-      ```bash
+      ```bash {3}
       export BEDOC_LANGUAGE=javascript
       export BEDOC_FORMAT=markdown
-      export BEDOC_INPUT=src/**/*.js
+      export BEDOC_INPUT=src/**/*.js # Use quotes if path has spaces
       export BEDOC_OUTPUT=docs
       export BEDOC_HOOKTIMEOUT=5000
       ```
@@ -196,7 +198,7 @@ of configuration options.
       ```powershell
       set BEDOC_LANGUAGE=javascript
       set BEDOC_FORMAT=markdown
-      set BEDOC_INPUT="src/**/*.js"
+      set BEDOC_INPUT=src/**/*.js
       set BEDOC_OUTPUT=docs
       set BEDOC_HOOKTIMEOUT=5000
       ```
@@ -206,7 +208,7 @@ of configuration options.
 3. **JSON5/YAML Configuration File** - Configuration file options may be
    expressed in either JSON5 or YAML.
 
-  ::: warning[On the topic of JSON 👴🏻]
+  :::info[On the topic of JSON 👴🏻]
 
   🙄 Yes, regular JSON is fine, too, and so is JSONC. Since JSON5 is a
   superset, *blahblahblah*, you can totally use all of them, but JSON5 is
@@ -230,7 +232,7 @@ of configuration options.
       output: "docs/api",
       debug: true,
       hookTimeout: 5000,
-      }
+    }
     ```
     </TabItem>
     <TabItem value="yaml">
@@ -363,6 +365,17 @@ by the configuration file as a whole.
   </TabItem>
 </Tabs>
 
+:::tip[My precioussss configggggggg]
+
+> *One Config to rule them all,*<br />
+> *One Config to find them,*<br />
+> *One Config to bring them all,*<br />
+> *And into **BeDoc** bind them.*
+
+ \- Someone, probably, somewhere.
+
+:::
+
 ## Debugging
 
 Enable debug mode to inspect how configurations are resolved and applied, as
@@ -378,7 +391,12 @@ sources and values.
 
 ### Debug Levels
 
-The `debugLevel` option accepts values from 0 to 4, with the following meanings:
+The `debugLevel` option accepts values from 0 to 4, with increasing verbosity and
+detail.
+
+For more information about debug messages, you can review the exposed
+[Logger object](/objects/logger) that is available to all actions and
+hooks.
 
 | **Level** | **Description**                                                          |
 | :-------: | ------------------------------------------------------------------------ |

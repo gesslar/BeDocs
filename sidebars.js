@@ -44,21 +44,12 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Tools",
-      link: { type: "generated-index" },
-      collapsed: true,
-      items: [
-        "tools/index",
-        "tools/logger",
-      ]
-    },
-    {
-      type: "category",
       label: "Objects",
       link: { type: "generated-index" },
       collapsed: true,
       items: [
         "objects/index",
+        "objects/logger",
         "objects/filemap",
         "objects/dirmap",
       ]

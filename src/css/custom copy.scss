@@ -4,6 +4,11 @@
  * work well for content-centric websites.
  */
 
+html {
+  transition: var(--ifm-transition-fast);
+}
+
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #004284;
@@ -13,6 +18,10 @@
   --ifm-color-primary-light: #004991;
   --ifm-color-primary-lighter: #004c98;
   --ifm-color-primary-lightest: #0056ac;
+
+  --doc-sidebar-width: 220px !important;
+
+  background-color: rgba(150, 190, 220, 1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -24,11 +33,51 @@
   --ifm-color-primary-light: #90c8ff;
   --ifm-color-primary-lighter: #a2d1ff;
   --ifm-color-primary-lightest: #d9ecff;
+
+  background-color: rgba(28, 33, 44, 1);
 }
-/*
-.header-github-link:hover {
-  opacity: 0.6;
-} */
+
+.main-wrapper {
+  max-width: var(--ifm-container-width);
+  padding: 0 var(--ifm-spacing-horizontal);
+  width: 100%;
+  margin: 0 auto
+}
+
+:root .navbar, .footer {
+  background-color: rgba(94, 120, 140, 0.4);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='dark'] .navbar, .footer {
+  background-color: rgba(16, 19, 26, 0.5);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+:root .theme-code-block-highlighted-line,
+html[data-theme='dark'] .theme-code-block-highlighted-line {
+  background-color: rgba(33, 150, 243, .15); /* A nice blue at 20% opacity */
+}
+
+/** Icon **************************** */
+
+/* Use a CSS variable for dynamic background */
+.bedocs-icon::before {
+  background: var(--svg-icon-url) no-repeat center center;
+  content: "";
+  display: block;
+  height: var(--svg-icon-size, 24px);
+  width: var(--svg-icon-size, 24px);
+  background-size: contain;
+  margin: auto;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .bedocs-icon::before {
+  filter: invert(100%) brightness(85%);
+}
 
 /* General styling for all SVG buttons */
 .header--svg-link {
@@ -41,7 +90,6 @@
   height: 100%;
   border-radius: 50%;
   transition: background var(--ifm-transition-fast);
-  /* border: 1px red solid; */
 }
 
 .header--svg-link:hover {
@@ -50,31 +98,25 @@
 
 /* Use a CSS variable for dynamic background */
 .header--svg-link::before {
-  background: var(--svg-icon-url) no-repeat center center;
-  content: "";
-  display: block;
-  /* border: black solid 1px; */
+  @extend .bedocs-icon;
   height: 24px;
   width: 24px;
-  background-size: contain;
-  margin: auto; /* Ensures it's centered */
-  transform: translateX(-1px); /* Nudge it left */
 }
 
 /* Set specific icons based on the data attribute */
-.header--svg-link[data-icon="github"]::before {
+.bedocs-icon[data-icon="github"]::before {
   --svg-icon-url: url("/img/line-md--github-loop.svg");
 }
 
-.header--svg-link[data-icon="attribution"]::before {
+.bedocs-icon[data-icon="attribution"]::before {
   --svg-icon-url: url("/img/gg--attribution.svg");
 }
 
-.header--svg-link[data-icon="discord"]::before {
+.bedocs-icon[data-icon="discord"]::before {
   --svg-icon-url: url("/img/meteor-icons--discord.svg");
 }
 
-.header--svg-link[data-icon="testimonials"]::before {
+.bedocs-icon[data-icon="testimonials"]::before {
   --svg-icon-url: url("/img/hugeicons--promotion.svg");
 }
 

@@ -8,7 +8,6 @@ import { themes as prismThemes } from 'prism-react-renderer';
 // import { remarkSnippet } from "./src/plugins/remark-snippet.js"
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-const announcedVersion = "1.0.0"
 
 const { vsDark: PrismLight, vsDark: PrismDark } = prismThemes
 
@@ -52,7 +51,8 @@ const config = {
   },
 
   plugins: [
-    "./src/plugins/md-snippet"
+    "./src/plugins/md-snippet",
+    'docusaurus-plugin-sass',
   ],
 
   presets: [
@@ -66,7 +66,9 @@ const config = {
           showLastUpdateTime: true,
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            './src/css/custom.scss',
+          ]
         },
       }),
     ],
@@ -83,12 +85,12 @@ const config = {
 
       docs: {
         sidebar: {
-          hideable: true
+          hideable: false
         },
       },
 
       navbar: {
-        hideOnScroll: true,
+        hideOnScroll: false,
         title: 'BeDoc',
         logo: {
           alt: 'BeDoc logo',
@@ -153,6 +155,7 @@ const config = {
           'bash',
           'diff',
           'json',
+          'yaml',
         ],
         magicComments: [
           {

@@ -12,7 +12,9 @@ as a module within your own project.
 Review the [Installation Guide](/start/installation) for details on
 how to get and install BeDoc. After writing the two lovely paragraphs
 below, I wanted to write something fun here. But, I couldn't think
-of anything, so, insert your own fun statements, here:
+of anything, so, insert your own fun statements, below in the space
+provided. If you need more room, simply turn the webpage over and
+continue on the back.
 
 ```
    _______________________________________________

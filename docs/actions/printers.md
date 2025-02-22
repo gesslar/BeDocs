@@ -113,7 +113,7 @@ simply `throw()`, and BeDoc will `catch()` it and report it.
 The printer has access to certain of BeDoc's core utilities through
 object propagated during the `setup()` function.
 
-- [**Logging**](/tools/logger) functions (debug, info, warn, error)
+- [**Logging**](/objects/logger) functions (debug, info, warn, error)
 
 ## Hook Support
 

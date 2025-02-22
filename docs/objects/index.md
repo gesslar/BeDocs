@@ -1,9 +1,10 @@
 ---
 layout: default
-title: Objects
+title: Objects exposed by BeDoc
 sidebar_position: 3
 ---
 
-import Cliffhanger from "/docs/snippets/_missing-doc.md"
-
-<Cliffhanger />
+BeDoc exposes different objects throughout the lifecycle of a
+job. From utility to informatinal, you will be able to access
+and use these when available through [actions](/actions) and
+[hooks](/actions/hooks).

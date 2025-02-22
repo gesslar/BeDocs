@@ -101,7 +101,7 @@ that BeDoc will call if present.
 
 - `setup({log})` - This method will be called before the `run()`, providing
   an opportunity to perform some setup functions, such as caching the passed
-  instance of the [Logger](/tools/logger) class in your action.
+  instance of the [Logger](/objects/logger) class in your action.
 
   ```javascript
   {
