@@ -77,7 +77,7 @@ has properties and methods that BeDoc calls, if present.
 
 - **`run({file,moduleContent})`** - The `run()` method is the interface to
   the action that is called by BeDoc to initiate it. When called, BeDoc will
-  pass an object containing a [FileMap](/objects/filemap) of the current
+  pass an object containing a [FileMap](/objects/file_and_dir) of the current
   file being processed and the content to be processed.
 
   ```javascript

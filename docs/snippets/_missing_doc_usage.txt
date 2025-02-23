@@ -1,7 +1,7 @@
 ---
-title: DirMap
+title: Logger
 layout: default
-parent: Objects
+parent: Tools
 ---
 
 import Cliffhanger from "/docs/snippets/_missing-doc.md"

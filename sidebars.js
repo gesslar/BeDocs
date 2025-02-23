@@ -50,8 +50,7 @@ const sidebars = {
       items: [
         "objects/index",
         "objects/logger",
-        "objects/filemap",
-        "objects/dirmap",
+        "objects/file_and_dir",
       ]
     },
   ],
