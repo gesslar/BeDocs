@@ -51,7 +51,6 @@ const config = {
   },
 
   plugins: [
-    "./src/plugins/md-snippet",
     'docusaurus-plugin-sass',
   ],
 

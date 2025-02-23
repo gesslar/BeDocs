@@ -27,6 +27,7 @@ const sidebars = {
         "start/installation",
         "start/configuration",
         "start/discovery",
+        "start/test",
       ]
     },
     {
