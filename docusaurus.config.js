@@ -63,7 +63,6 @@ const config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: './sidebars.js',
-          showLastUpdateTime: true,
         },
         theme: {
           customCss: [
