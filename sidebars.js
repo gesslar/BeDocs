@@ -27,7 +27,7 @@ const sidebars = {
         "start/installation",
         "start/configuration",
         "start/discovery",
-        "start/test",
+        // "start/test",
       ]
     },
     {
@@ -39,7 +39,7 @@ const sidebars = {
         "actions/index",
         "actions/parsers",
         "actions/printers",
-        "actions/contracts/index",
+        "actions/contracts",
         "actions/hooks",
       ]
     },
