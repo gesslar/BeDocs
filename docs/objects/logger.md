@@ -1,7 +1,6 @@
 ---
 title: Logger
-layout: default
-sidebar_position: 4
+hide_title: true
 ---
 
 ## **Logging in BeDoc**

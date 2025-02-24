@@ -1,6 +1,6 @@
 ---
 title: BeDoc Examples
-sidebar_position: 0
+hide_title: true
 ---
 
 In addition to the examples contained on this website, you can find

@@ -1,7 +1,6 @@
 ---
 title: Some free stuff I got
-description: Wheee!
-position: 99
+hide_title: true
 ---
 
 import Icon from "@site/src/components/Icon";

@@ -1,7 +1,6 @@
 ---
 title: Contracts
-layout: default
-sidebar_position: 3
+hide_title: true
 ---
 
 import Tabs from '@theme/Tabs'

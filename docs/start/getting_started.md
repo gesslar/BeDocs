@@ -1,7 +1,6 @@
 ---
 title: Getting Started with BeDoc
-layout: default
-sidebar_position: 0
+hide_title: true
 ---
 
 **BeDoc** may be installed globally for use as a command, or

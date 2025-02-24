@@ -1,8 +1,10 @@
 ---
 title: How to find Discord
 description: How to find Discord
-position: 99
+hide_title: true
 ---
+
+Discord is really neat.
 
 You can find Discord at <tt>http</tt>...
 

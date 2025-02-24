@@ -95,17 +95,8 @@ const config = {
           src: 'img/project-management.png',
         },
         items: [
-          { type: "doc", position: "left", docId: "start/index", label: "Docs", sidebarId: "docs" },
-          // { to: "/start", label: "Getting Started", position: "left" },
+          { type: "doc", position: "left", docId: "start/getting_started", label: "Docs", sidebarId: "docs" },
           { type: "docSidebar", position: "left", sidebarId: "examples", label: "Examples" },
-          // { to: "/category/examples", label: "Examples", position: "left" },
-          // {
-          //   href: 'https://github.com/gesslar/BeDoc',
-          //   // label: 'GitHub',
-          //   className: "header-github-link", "aria-label": "GitHub repository",
-          //   position: 'right',
-          //   type: "icon"
-          // },
           {
             href: "/discord",
             position: "right",
@@ -181,11 +172,7 @@ const config = {
       // content: `🎉️ <b><a target="_blank" href="https://docusaurus.io/blog/releases/${announcedVersion}">Docusaurus v${announcedVersion}</a> is out!</b> 🥳️`,
       // },
 
-      scripts: [
-        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
-      ],
-
-      titleDelimiter: "😱"
+      titleDelimiter: "~"
     }),
 };
 

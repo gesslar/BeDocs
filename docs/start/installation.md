@@ -1,7 +1,6 @@
 ---
 title: Installation
-layout: default
-sidebar_position: 1
+hide_title: true
 ---
 
 import Tabs from '@theme/Tabs'

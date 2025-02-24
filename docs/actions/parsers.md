@@ -1,7 +1,6 @@
 ---
 title: Parsers
-layout: default
-sidebar_position: 1
+hide_title: true
 ---
 
 This guide explains how to create custom parsers for BeDoc. Parsers are

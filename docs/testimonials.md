@@ -1,6 +1,6 @@
 ---
 title: Testimonials
-layout: default
+hide_title: true
 ---
 
 # Testimonials

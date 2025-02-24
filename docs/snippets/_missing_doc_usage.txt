@@ -1,6 +1,5 @@
 ---
 title: Logger
-layout: default
 parent: Tools
 ---
 

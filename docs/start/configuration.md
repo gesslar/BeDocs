@@ -1,7 +1,6 @@
 ---
 title: Configuration
-layout: default
-sidebar_position: 2
+hide_title: true
 ---
 
 Inline CSS example: <code className="language-css">`p { color: red; }`</code>

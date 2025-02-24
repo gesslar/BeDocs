@@ -2,7 +2,7 @@
 title: Contracts
 sidebar: examplesSidebar
 description: Examples of action contracts in both YAML and JSON5.
-sidebar_position: 1
+hide_title: true
 ---
 
 import Tabs from '@theme/Tabs'

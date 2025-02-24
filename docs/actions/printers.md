@@ -1,7 +1,6 @@
 ---
-layout: default
 title: Printers
-sidebar_position: 2
+hide_title: true
 ---
 
 This guide explains how to create custom printers for BeDoc. Printers are

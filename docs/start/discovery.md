@@ -1,11 +1,6 @@
 ---
 title: Discovery
-layout: default
-sidebar_position: 3
-config:
-  theme: redux-dark
-  look: handDrawn
-  layout: elk
+hide_title: true
 ---
 
 # Discovery in BeDoc

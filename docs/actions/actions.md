@@ -1,7 +1,6 @@
 ---
-title: Actions
-layout: default
-sidebar_position: 1
+title: Getting Started with Actions
+hide_title: true
 ---
 
 Actions are the core of BeDoc's functionality. They define the primary tasks
